@@ -1,25 +1,22 @@
-## Laravel PHP Framework
+## Title
+	JAYVEY
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## Description
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
+This project creates, maintains a simple poll/survey application. An admin user will be able to create, manage his/her own poll/survery and view results of the survey. A normal user will be able to take the polls created by the admin user.
 
-Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+### Primary feature
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+1. Application will have user signup and login to the application.
+2. Admin User will be able to create the survey of his own and create question and answers for the survey
+3. Admin user can manage the survey i.e edit/delete the question and answer of the survey
+4. Admin user will be able to see the list of suvery's he created.
+5. Admin user will be able to view the result of the survery he created. 
+6. A normal user will be able to take the survey and submit it.
 
-## Official Documentation
+### Additional Feature
 
-Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
-
-### Contributing To Laravel
-
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+1. This application will have 2 type of user. Admin user will be able to maintain the survey/poll.
+2. Making survey/poll non editable in case if any user took the poll already
+3. Making survey unavailable after certain date.
+4. Add/Edit task via Ajax (Will try at the end).
