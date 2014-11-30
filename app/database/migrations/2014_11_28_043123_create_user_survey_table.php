@@ -21,7 +21,7 @@ class CreateUserSurveyTable extends Migration {
 			
 			# Define foreign keys...
 			$table->foreign('user_id')->references('id')->on('users');
-			$table->foreign('survey_id')->references('id')->on('survey');
+			$table->foreign('survey_id')->references('id')->on('surveys');
 			
 		});
 	}

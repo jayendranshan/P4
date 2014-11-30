@@ -18,7 +18,7 @@ class CreateAnswersTable extends Migration {
 			$table->string('answertext');
 			$table->integer('question_id')->unsigned();
 			$table->integer('survey_id')->unsigned();
-			$table->integer('answerCount')
+			$table->integer('answerCount');
 			$table->timestamps();
 
 			# Define foreign keys...
