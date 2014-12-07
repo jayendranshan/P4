@@ -1,0 +1,40 @@
+#divContent{
+	margin:50px 0 0 170px;
+	width:800px;
+	padding:20px 50px 40px;
+	background:#F5FFFF;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;-ms-border-radius:10px;
+	-o-border-radius:10px;border-radius:10px;
+	box-shadow:0 0 20px 3px rgba(0,0,0,.6)
+}
+
+.backColor{
+	background-color: #D8D8D8;
+}
+
+#divMessage {
+	margin:0 auto;
+	width:800px;
+	padding:0 50px 10px 25px;
+	background:#F5FFFF;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;-ms-border-radius:10px;
+	-o-border-radius:10px;border-radius:10px;
+	box-shadow:0 0 20px 3px rgba(0,0,0,.6)
+}
+
+a{
+text-align: center;
+}
+
+span{
+	color: red;
+}
+
+.PwdFont{
+	color: blue;
+	font: italic bold 15px Georgia, serif;
+}
+
+

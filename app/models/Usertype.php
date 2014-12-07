@@ -1,6 +1,6 @@
   
 <?php
-class Survey extends Eloquent {
+class Usertype extends Eloquent {
     # The guarded properties specifies which attributes should *not* be mass-assignable
     protected $guarded = array('id', 'created_at', 'updated_at');
     /**
@@ -13,8 +13,8 @@ class Survey extends Eloquent {
     /**
     * Books belong to many Tags
     */
-    public function users() {
-        return $this->belongsToMany('User');
+    public function user() {
+        return $this->belongsTo('User');
     }   
 
 }
