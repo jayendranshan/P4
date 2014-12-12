@@ -48,3 +48,36 @@ Route::get('/login', 'UserController@getLogin' );
 Route::post('/signup', 'UserController@postSignup' );
 Route::post('/login', 'UserController@postLogin' );
 Route::get('/logout', 'UserController@getLogout' );
+
+
+/*
+Survey
+(Explicit Routing)
+*/
+Route::get('/survey/list', 'SurveyController@getIndex');
+Route::get('/survey/create', 'SurveyController@getCreate');
+Route::post('/survey/create', 'SurveyController@postCreate');
+
+Route::get('/survey/edit/{id}', 'SurveyController@getEdit');
+Route::post('/survey/edit', 'SurveyController@postEdit');
+
+Route::get('/survey/delete/{id}', 'SurveyController@getDelete');
+
+
+/*
+question
+(Explicit Routing)
+*/
+
+Route::get('/question/create', 'QuestionController@getCreate');
+Route::post('/question/create', 'QuestionController@postCreate');
+
+/*
+question
+(Explicit Routing)
+*/
+
+Route::get('/answer/create', 'AnswerController@getCreate');
+Route::post('/answer/create', 'AnswerController@postCreate');
+
+?>

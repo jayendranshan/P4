@@ -6,25 +6,25 @@
 
 @section('content')
 
+	@if(Auth::check())
+		
+	@endif
+
 	<h1>Add a new survey/poll</h1>
 
-	{{ Form::open(array('url' => '/book/create')) }}
+	{{ Form::open(array('url' => '/survey/create')) }}
 
 
-		{{ Form::label('title','Title') }}
-		{{ Form::text('title'); }}
+	<h1>Please create new Survey/Poll here.</h1>
 
-		{{ Form::label('author_id', 'Author') }}
-		{{ Form::select('author_id', $authors); }}
+		{{ Form::label('name','Survey Title') }}
+		{{ Form::text('name'); }}
 
-		{{ Form::label('published','Published Year (YYYY)') }}
-		{{ Form::text('published'); }}
+		{{ Form::label('description','Survey Description') }}
+		{{ Form::text('description'); }}
 
-		{{ Form::label('cover','Cover Image URL') }}
-		{{ Form::text('cover'); }}
-
-		{{ Form::label('purchase_link','Purchase Link URL') }}
-		{{ Form::text('purchase_link'); }}
+		{{ Form::label('lastvaliddate','Survey Last Valid Date') }}
+		{{ Form::text('lastvaliddate'); }}
 
 		{{ Form::submit('Add'); }}
 

@@ -36,7 +36,9 @@ ini_set('display_errors', 1);
 
         <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="/"> <span class="glyphicon glyphicon-home"></span> Go to Home Page </a></li>
+                <li><a href="/survey/list"> <span class="glyphicon glyphicon-home"></span> Go to Home Page </a></li>
+
+                <li><a href="/logout"> <span class="glyphicon glyphicon-home"></span> Logout </a></li>
               </ul>
             </div>
             
