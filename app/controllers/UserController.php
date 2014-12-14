@@ -68,8 +68,19 @@ class UserController extends BaseController {
 		$credentials = Input::only('email', 'password');
 		# Note we don't have to hash the password before attempting to auth - Auth::attempt will take care of that for us
 		if (Auth::attempt($credentials, $remember = false)) {
-			//return Redirect::intended('/')->with('flash_message', 'Welcome Back!');
-			return Redirect::action('SurveyController@getIndex')->with('flash_message','Welcome to JayVey. Please create the new survey here.');
+			
+			$userid = Auth::id();
+			$user = User::find($userid);
+			if($user->usertype_id == 1)
+			{
+				return Redirect::action('SurveyController@getIndex')->with('flash_message','Welcome to JayVey. Please create the new survey here.');
+			}
+			else if($user->usertype_id == 2)
+			{
+				return Redirect::action('ParticipateSurveyController@getIndex')->
+				with('flash_message','Welcome to JayVey. Please take the survey.');
+			}
+			
 		}
 		else {
 			return Redirect::to('/login')

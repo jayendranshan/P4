@@ -58,7 +58,7 @@ class SurveyController extends BaseController {
 		try {
 			$question = Question::where('survey_id', '=', $survey_id)->get();
 
-			print_r($question);
+			//print_r($question);
 		}
 		catch(Exception $e) {
 			return Redirect::to('/survey/list')->with('flash_message', 'Question not found');
@@ -91,11 +91,20 @@ class SurveyController extends BaseController {
 	* Show the "show a survey's"
 	* @return View
 	*/
-	public function getDelete() {
+	public function getDelete($survey_id) {
 
-		//try {
-		    $surveys    = Survey::all();
-		//}
+		try {
+	        $survey = Survey::findOrFail($survey_id);
+	    }
+	    catch(exception $e) {
+	        return View::make('survey_list')->with('flash_message', 'Could not delete survey - not found.');
+	    }
+	    Answer::where('survey_id', '=', $survey_id)->delete();
+	    Question::where('survey_id', '=', $survey_id)->delete();
+	    Survey::destroy($survey_id);
+
+	    $surveys    = Survey::all();
+
     	return View::make('survey_list')->with('surveys',$surveys);
 	}
 

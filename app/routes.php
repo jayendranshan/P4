@@ -64,6 +64,10 @@ Route::post('/survey/edit', 'SurveyController@postEdit');
 Route::get('/survey/delete/{id}', 'SurveyController@getDelete');
 
 
+Route::get('/survey/participatelist', 'ParticipateSurveyController@getIndex');
+Route::get('/survey/participate/{id}', 'ParticipateSurveyController@getParticipate');
+Route::post('/survey/participate', 'ParticipateSurveyController@postParticipate');
+
 /*
 question
 (Explicit Routing)

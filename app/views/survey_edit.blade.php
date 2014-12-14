@@ -7,9 +7,14 @@
 @section('content')
 	<h1>Here are the survey's created</h1>
 
-	
+	{{ $question['questiontext'] }} <br>
 
-	{{ Form::open(array('url' => '/survey/edit')) }}
+
+	{{ $answers }}
+
+
+
+{{ Form::open(array('url' => '/survey/edit')) }}
 
 		{{ Form::label('question1','Question1') }}
 		{{ Form::text('question',$question['questiontext']); }}
@@ -23,5 +28,5 @@
 		{{ Form::submit('Edit Survey question/answers'); }}
 
 	{{ Form::close() }}
-
+	
 @stop
