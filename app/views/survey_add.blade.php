@@ -6,10 +6,7 @@
 
 @section('content')
 
-	@if(Auth::check())
-		
-	@endif
-
+<div class="container">
 	<h1>Add a new survey/poll</h1>
 
 	{{ Form::open(array('url' => '/survey/create')) }}
@@ -30,4 +27,5 @@
 
 	{{ Form::close() }}
 
+</div>
 @stop

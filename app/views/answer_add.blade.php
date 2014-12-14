@@ -6,10 +6,7 @@
 
 @section('content')
 
-	@if(Auth::check())
-		
-	@endif
-
+<div class="container">
 	<h1>Add the answers for the survey</h1>
 
 	{{ Form::open(array('url' => '/answer/create')) }}
@@ -29,5 +26,7 @@
 		{{ Form::submit('Add the Answers'); }}
 
 	{{ Form::close() }}
+
+</div>
 
 @stop

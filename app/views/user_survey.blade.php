@@ -10,7 +10,7 @@
 
 		@foreach($surveys as $survey)
 
-				<div>
+				<div class="container">
 					<ul>
 						<li>
 							<a href='/survey/participate/{{ $survey->id }}'>{{ $survey->name }}</a>

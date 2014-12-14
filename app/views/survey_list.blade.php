@@ -10,7 +10,7 @@
 		<h1>Here are the survey's created</h1>
 
 		@foreach($surveys as $survey)
-
+			<div class="container">
 				<div>
 					<ul>
 						<li>
@@ -26,6 +26,7 @@
 				<div>
 					<a href="/survey/create">Create New Survey</a>
 				</div>
+			</div>
 	@endif
 
 @stop

@@ -30,26 +30,26 @@ class ParticipateSurveyController extends BaseController {
 		try {
 			$question = Question::where('survey_id', '=', $survey_id)->get();
 
-			$questionObject = Question::find($question['id']);
+			//$questionObject = Question::find($question['id']);
 
 			print_r($questionObject);
 		}
 		catch(Exception $e) {
-			$questionObject = Question::find($question->id);
-			print_r($questionObject);
+			//$questionObject = Question::find($question->id);
+			//print_r($questionObject);
 			return Redirect::to('/survey/participatelist')->with('flash_message', 'Question not found');
 		}
 
 		try {
 			$answers = Answer::where('survey_id', '=', $survey_id)->get();
 
-			$answersObject = Question::findOrFail($answers['id']);
+			//$answersObject = Question::findOrFail($answers['id']);
 		}
 		catch(Exception $e) {
 			return Redirect::to('/survey/participatelist')->with('flash_message', 'Answer not found');
 		}
-		return View::make('survey_participate')->with('question', $questionObject)
-		->with('answers', $answersObject);
+		return View::make('survey_participate')->with('question', $question)
+		->with('answers', $answers);
 	}
 
 
