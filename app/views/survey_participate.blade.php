@@ -7,13 +7,15 @@
 @section('content')
 
 <div class="container">
-{{ Form::open(array('url' => '/survey/participate')) }}
+{{ Form::open(array('action' => 'ParticipateSurveyController@postParticipate')) }}
 
-		{{ Form::label('question',$questionObject['questiontext']) }}
+		@foreach($question as $question)
+			{{ Form::label('question',$question['questiontext']) }} <br />
+		@endforeach
+		
 
 		@foreach($answers as $answer)
-
-			{{ Form::radio('Answer', $answer['id']) }} {{$answer['answertext']}}
+			{{ Form::radio('Answer', $answer['id']) }} {{$answer['answertext']}} <br />
 			
 		@endforeach
 		{{ Form::submit('Vote'); }}

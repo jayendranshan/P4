@@ -58,8 +58,8 @@ Route::get('/survey/list', 'SurveyController@getIndex');
 Route::get('/survey/create', 'SurveyController@getCreate');
 Route::post('/survey/create', 'SurveyController@postCreate');
 
-Route::get('/survey/edit/{id}', 'SurveyController@getEdit');
 Route::post('/survey/edit', 'SurveyController@postEdit');
+Route::get('/survey/edit/{id}', 'SurveyController@getEdit');
 
 Route::get('/survey/delete/{id}', 'SurveyController@getDelete');
 

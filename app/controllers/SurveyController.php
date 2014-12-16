@@ -55,10 +55,11 @@ class SurveyController extends BaseController {
 	*/
 	public function getEdit($survey_id) {
 
+		$idCount = 1;
+		$idOption=1;
+		$idOptionid=1;
 		try {
 			$question = Question::where('survey_id', '=', $survey_id)->get();
-
-			//print_r($question);
 		}
 		catch(Exception $e) {
 			return Redirect::to('/survey/list')->with('flash_message', 'Question not found');
@@ -70,8 +71,10 @@ class SurveyController extends BaseController {
 		catch(Exception $e) {
 			return Redirect::to('/survey/list')->with('flash_message', 'Answer not found');
 		}
+
+		//dd($answers);
 		return View::make('survey_edit')->with('question', $question)
-		->with('answers', $answers);
+		->with('answers', $answers)->with('idCount', $idCount)->with('idOption', $idOption)->with('idOptionid', $idOptionid);
 	}
 
 
@@ -81,10 +84,32 @@ class SurveyController extends BaseController {
 	*/
 	public function postEdit() {
 
-		//try {
-		    $surveys    = Survey::all();
-		//}
-    	return View::make('survey_Edit')->with('surveys',$surveys);
+
+		$questionid = Input::get('qid');
+		$option1id = Input::get('a1');
+		$option2id = Input::get('a2');
+		$option3id = Input::get('a3');
+
+		$question = Question::find($questionid);
+
+		$option1 = Answer::find($option1id);
+		$option2 = Answer::find($option2id);
+		$option3 = Answer::find($option3id);
+
+		$question->questiontext = Input::get('qtext');
+		$question->save();
+
+		$option1->answertext = Input::get('Answer1');
+		$option1->save();
+
+		$option2->answertext = Input::get('Answer2');
+		$option2->save();
+
+		$option3->answertext = Input::get('Answer3');
+		$option3->save();
+
+		$surveys    = Survey::all();
+    	return View::make('survey_list')->with('surveys',$surveys)->with('flash_message','Survey has been updated.');
 	}
 
 	/**

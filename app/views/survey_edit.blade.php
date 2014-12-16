@@ -5,26 +5,30 @@
 @stop
 
 @section('content')
-	<h1>Here are the survey's created</h1>
+	<h1>Edit survey question and answers</h1>
 
 
 <div class="container">
+	{{ Form::open(array('action' => 'SurveyController@postEdit')) }}
 
-{{ Form::open(array('url' => '/survey/edit')) }}
-
-		{{ Form::label('question1','Question1') }}
-		{{ Form::text('question1',$question['questiontext']); }}
-
-		@foreach($answers as $answer)
-
-			{{ Form::label('answer1','Answer1') }}
-			{{ Form::text('answer1',$answer['answertext']); }}
+		@foreach($question as $question)
+			{{ Form::hidden('qid',$question['id']); }}
+			{{ Form::label('QuestionLabel','Question') }}
+			{{ Form::text('qtext',$question['questiontext']); }} <br />
 
 		@endforeach
-		{{ Form::submit('Edit Survey question/answers'); }}
+		
+		@foreach($answers as $answer)
+		
+			{{ Form::hidden('a'.$idCount++,$answer['id']); }}
+			{{ Form::label('answer1','Option'.$idOption++) }}
+			{{ Form::text('Answer'.$idOptionid++,$answer['answertext']); }}<br />
+
+		@endforeach
+		<br />
+		{{ Form::submit('Edit'); }}
 
 	{{ Form::close() }}
-
 </div>
 	
 @stop
