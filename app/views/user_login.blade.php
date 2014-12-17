@@ -9,17 +9,25 @@
 
 <div class="container">
 
-<h1>Log in</h1> <br> <br>
+<h2><label class="label label-default">Log in</label></h2><br>
 
 {{ Form::open(array('url' => '/login')) }}
+	
+	<div class='form-group'>
+    {{ Form::label('email','Email',array('class' => 'label label-default')) }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;
+    {{ Form::text('email') }} 
+	</div>
 
-    {{ Form::label('email') }}
-    {{ Form::text('email') }} <br>
+	<div class='form-group'>
+    {{ Form::label('password','Password',array('class' => 'label label-default')) }}&nbsp;&nbsp;&nbsp;
+    {{ Form::password('password') }} 
+	</div>
 
-    {{ Form::label('password') }}
-    {{ Form::password('password') }} <br> <br>
-
-    {{ Form::submit('Submit') }}
+	<div class='form-group'>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    {{ Form::submit('Submit',array('class' => 'btn btn-primary')) }}
+</div>
 
 {{ Form::close() }}
 </div>

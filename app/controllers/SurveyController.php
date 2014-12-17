@@ -58,23 +58,17 @@ class SurveyController extends BaseController {
 		$idCount = 1;
 		$idOption=1;
 		$idOptionid=1;
-		try {
-			$question = Question::where('survey_id', '=', $survey_id)->get();
-		}
-		catch(Exception $e) {
-			return Redirect::to('/survey/list')->with('flash_message', 'Question not found');
-		}
 
-		try {
-			$answers = Answer::where('survey_id', '=', $survey_id)->get();
+		try{
+			$survey = Survey::with('question','answer')->findOrFail($survey_id);
 		}
 		catch(Exception $e) {
-			return Redirect::to('/survey/list')->with('flash_message', 'Answer not found');
+			return Redirect::to('/survey/list')->with('flash_message', 'survey not found');
 		}
 
 		//dd($answers);
-		return View::make('survey_edit')->with('question', $question)
-		->with('answers', $answers)->with('idCount', $idCount)->with('idOption', $idOption)->with('idOptionid', $idOptionid);
+		return View::make('survey_edit')->with('idCount', $idCount)->with('idOption', $idOption)->with('idOptionid', $idOptionid)
+		->with('survey',$survey);
 	}
 
 

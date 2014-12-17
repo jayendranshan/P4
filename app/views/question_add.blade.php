@@ -15,10 +15,10 @@
 
 	<h1>Please add the question for the survey</h1>
 
-		{{ Form::label('question1','Question1') }}
+		{{ Form::label('question1','Question1',array('class' => 'label label-default')) }}
 		{{ Form::text('question'); }}
 
-		{{ Form::submit('Add a question'); }}
+		{{ Form::submit('Add a question',array('class' => 'btn btn-primary')); }}
 
 	{{ Form::close() }}
 

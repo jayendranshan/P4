@@ -6,11 +6,12 @@
 
 @section('content')
 
+<div class="container">
 	@if(Auth::check())
-		<h1>Here are the survey's created</h1>
+		<h2><label class="label label-default">Available Survey's</label></h2>
 
 		@foreach($surveys as $survey)
-			<div class="container">
+			
 				<div>
 					<ul>
 						<li>
@@ -26,7 +27,7 @@
 				<div>
 					<a href="/survey/create">Create New Survey</a>
 				</div>
-			</div>
+			
 	@endif
-
+</div>
 @stop

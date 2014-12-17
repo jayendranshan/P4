@@ -14,16 +14,16 @@
 
 	<h1>Please create new Survey/Poll here.</h1>
 
-		{{ Form::label('name','Survey Title') }}
+		{{ Form::label('name','Survey Title',array('class' => 'label label-default')) }}
 		{{ Form::text('name'); }}
 
-		{{ Form::label('description','Survey Description') }}
+		{{ Form::label('description','Survey Description',array('class' => 'label label-default')) }}
 		{{ Form::text('description'); }}
 
-		{{ Form::label('lastvaliddate','Survey Last Valid Date') }}
+		{{ Form::label('lastvaliddate','Survey Last Valid Date',array('class' => 'label label-default')) }}
 		{{ Form::text('lastvaliddate'); }}
 
-		{{ Form::submit('Add'); }}
+		{{ Form::submit('Add',array('class' => 'btn btn-primary')); }}
 
 	{{ Form::close() }}
 

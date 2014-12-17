@@ -31,23 +31,25 @@ error_reporting(0);
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <font size="5" color="white">JayVey</font>  
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="6" color="white">JayVey</font>  
             </div>
 
         <div class="navbar-collapse collapse">
+             @if(Auth::check())
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="/survey/list"> <span class="glyphicon glyphicon-home"></span> Go to Home Page </a></li>
-                @if(Auth::check())
+               
                 <li><a href="/logout"> <span class="glyphicon glyphicon-home"></span> Logout </a></li>
-                @endif
+                
               </ul>
+              @endif
             </div>
             
         </div>
     </div>
     <br><br><br>
     @if(Session::get('flash_message'))
-        <div class='flash-message'>{{ Session::get('flash_message') }}</div>
+        <div class="alert alert-success" role="alert">{{ Session::get('flash_message') }}</div>
     @endif
     @yield('content')
 

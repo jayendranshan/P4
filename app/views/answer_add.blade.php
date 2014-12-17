@@ -7,23 +7,20 @@
 @section('content')
 
 <div class="container">
-	<h1>Add the answers for the survey</h1>
+	<h2><label class="label label-default">Add the answers for the survey</label></h2>
 
 	{{ Form::open(array('url' => '/answer/create')) }}
 
-
-	<h1>Please add the question for the survey</h1>
-
-		{{ Form::label('answer1','Answer1') }}
+		{{ Form::label('answer1','Answer1',array('class' => 'label label-default')) }}
 		{{ Form::text('answer1'); }}
 
-		{{ Form::label('answer2','Answer2') }}
+		{{ Form::label('answer2','Answer2',array('class' => 'label label-default')) }}
 		{{ Form::text('answer2'); }}
 
-		{{ Form::label('answer3','Answer3') }}
+		{{ Form::label('answer3','Answer3',array('class' => 'label label-default')) }}
 		{{ Form::text('answer3'); }}
 
-		{{ Form::submit('Add the Answers'); }}
+		{{ Form::submit('Add the Answers',array('class' => 'btn btn-primary')); }}
 
 	{{ Form::close() }}
 
