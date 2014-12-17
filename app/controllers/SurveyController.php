@@ -46,7 +46,7 @@ class SurveyController extends BaseController {
 		# Magic: Eloquent
 		//$book->save();
 		
-		return Redirect::action('QuestionController@getCreate')->with('flash_message','Your suurvey has been added.');
+		return Redirect::action('QuestionController@getCreate')->with('flash_message','Your survey has been added.');
 	}
 
 	/**

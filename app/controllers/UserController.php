@@ -53,8 +53,16 @@ class UserController extends BaseController {
 		}
 		# Log in
 		Auth::login($user);
-		return Redirect::action('SurveyController@getIndex')
+		if($user->usertype_id == 1)
+			{
+				return Redirect::action('SurveyController@getIndex')
 				->with('flash_message','Welcome to JayVey. Please create the new survey here.');
+			}
+			else if($user->usertype_id == 2)
+			{
+				return Redirect::action('ParticipateSurveyController@getIndex')->
+				with('flash_message','Welcome to JayVey. Please take the survey.');
+			}
 	}
 	/**
 	* Display the login form
