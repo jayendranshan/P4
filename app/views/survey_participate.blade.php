@@ -15,7 +15,7 @@
 		@endforeach
 		
 
-		@foreach($survey->answers as $answer)
+		@foreach($survey->answer as $answer)
 			{{ Form::radio('Answer', $answer['id']) }} {{$answer['answertext']}} <br />
 			
 		@endforeach
