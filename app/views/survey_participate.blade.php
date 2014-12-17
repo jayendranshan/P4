@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="container">
-<h1>Vote for the survey {{{$survey->name}}}
+<h1>Vote for the survey {{{$survey->name}}}</h1>
 {{ Form::open(array('action' => 'ParticipateSurveyController@postParticipate')) }}
 
 		@foreach($survey->question as $question)
