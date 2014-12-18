@@ -25,7 +25,7 @@
 
 		<div class='form-group'>
 		{{ Form::label('lastvaliddate','Survey Last Valid Date',array('class' => 'label label-default')) }}
-		{{ Form::text('lastvaliddate'); }}</div>
+		{{ Form::text('lastvaliddate'); }}{{ Form::label('DateFormat', 'Dateformat: YYYY/MM/DD ',array('class' => 'label label-info')) }}</div>
 
 		<div class='form-group'>
 		{{ Form::submit('Add New Survey',array('class' => 'btn btn-primary')); }}
