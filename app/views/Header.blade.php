@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 //ini_set('display_errors', 1);
 ?>
 
@@ -34,17 +34,17 @@ error_reporting(0);
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="6" color="white">JayVey</font>  
             </div>
 
-        <div class="navbar-collapse collapse">
-             @if(Auth::check())
+        <div class="navbar-collapse collapse">   
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="/survey/list"> <span class="glyphicon glyphicon-home"></span> Go to Home Page </a></li>
-               
-                <li><a href="/logout"> <span class="glyphicon glyphicon-home"></span> Logout </a></li>
                 
+                @if(Auth::check())
+                <li><a href="/survey/list"> <span class="glyphicon glyphicon-home"></span> Go to Home Page </a></li>
+                <li><a href="/logout"> <span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
+                @else
+                <li><a href="/"> <span class="glyphicon glyphicon-home"></span> Go to Home Page </a></li>
+                @endif
               </ul>
-              @endif
-            </div>
-            
+            </div> 
         </div>
     </div>
     <br><br><br>

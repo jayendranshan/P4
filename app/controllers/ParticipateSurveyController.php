@@ -16,7 +16,7 @@ class ParticipateSurveyController extends BaseController {
 	public function getIndex() {
 
 		//try {
-		    $surveys  = Survey::all();
+		    $surveys  = Survey::where('lastvaliddate', '>=', new DateTime('today'))->get();
 		//}
     	return View::make('user_survey')->with('surveys',$surveys);
 	}
@@ -59,7 +59,7 @@ class ParticipateSurveyController extends BaseController {
 	public function postParticipate() {
 
 
-		$surveys    = Survey::all();
+		$surveys    = Survey::where('lastvaliddate', '>=', new DateTime('today'))->get();;
 
 		$AnswerID = Input::get('Answer');
 		$Answer = Answer::find($AnswerID);

@@ -7,7 +7,7 @@
 @section('content')
 
 @foreach($errors->all() as $message)
-	<div class='error'>{{ $message }}</div>
+	<div class='alert alert-danger'>{{ $message }}</div>
 @endforeach
 
 <div class="container">

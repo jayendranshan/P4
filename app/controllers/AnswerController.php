@@ -51,7 +51,9 @@ class AnswerController extends BaseController {
 		$answer3->question_id = $newquestion['id'];
 		$answer3->save();
 
-		return Redirect::action('SurveyController@getCreate')->with('flash_message','Welcome to JayVey. Please create the new survey here.');
+		return Redirect::action('SurveyController@getCreate')
+		->with('flash_message','Options for the survey has been added. Please click Go to Home Page link at the top to see all
+			the surveys or please create another survey below.');
 	}
 
 }

@@ -8,17 +8,17 @@
 
 <div class="container">
 
-	<h1>Add a question for the survey</h1>
-
 	{{ Form::open(array('url' => '/question/create')) }}
 
+	<h2><label class="label label-default">Add the question for the survey</label></h2> <br>
 
-	<h1>Please add the question for the survey</h1>
-
-		{{ Form::label('question1','Question1',array('class' => 'label label-default')) }}
+		<div class='form-group'>
+		<b>{{ Form::label('question1','Question1',array('class' => 'label label-default')) }}</b>&nbsp;&nbsp;&nbsp;
 		{{ Form::text('question'); }}
-
+	</div>
+	<div class='form-group'>
 		{{ Form::submit('Add a question',array('class' => 'btn btn-primary')); }}
+	</div>
 
 	{{ Form::close() }}
 

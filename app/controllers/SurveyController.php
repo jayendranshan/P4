@@ -16,7 +16,7 @@ class SurveyController extends BaseController {
 	public function getIndex() {
 
 		//try {
-		    $surveys    = Survey::all();
+		    $surveys  = Survey::where('lastvaliddate', '>=', new DateTime('today'))->get();
 		//}
     	return View::make('survey_list')->with('surveys',$surveys);
 	}
@@ -78,31 +78,55 @@ class SurveyController extends BaseController {
 	*/
 	public function postEdit() {
 
+		$option1id = "";
+		$option1 = "";
+		$option2id = "";
+		$option2 = "";
+		$option3id = "";
+		$option3 = "";
 
 		$questionid = Input::get('qid');
-		$option1id = Input::get('a1');
-		$option2id = Input::get('a2');
-		$option3id = Input::get('a3');
 
+		if (isset($_POST["a1"]))
+		{
+			$option1id = Input::get('a1');
+			$option1 = Answer::find($option1id);
+		}
+		if (isset($_POST["a2"]))
+		{
+			$option2id = Input::get('a2');
+			$option2 = Answer::find($option2id);
+		}
+		if (isset($_POST["a3"]))
+		{
+			$option3id = Input::get('a3');
+			$option3 = Answer::find($option3id);
+		}
+		
 		$question = Question::find($questionid);
-
-		$option1 = Answer::find($option1id);
-		$option2 = Answer::find($option2id);
-		$option3 = Answer::find($option3id);
 
 		$question->questiontext = Input::get('qtext');
 		$question->save();
 
-		$option1->answertext = Input::get('Answer1');
-		$option1->save();
+		if (isset($_POST["Answer1"]))
+		{
+			$option1->answertext = Input::get('Answer1');
+			$option1->save();
+		}
+		
+		if (isset($_POST["Answer2"]))
+		{
+			$option2->answertext = Input::get('Answer2');
+			$option2->save();
+		}
 
-		$option2->answertext = Input::get('Answer2');
-		$option2->save();
+		if (isset($_POST["Answer3"]))
+		{
+			$option3->answertext = Input::get('Answer3');
+			$option3->save();
+		}
 
-		$option3->answertext = Input::get('Answer3');
-		$option3->save();
-
-		$surveys    = Survey::all();
+		$surveys    = Survey::where('lastvaliddate', '>=', new DateTime('today'))->get();
     	return View::make('survey_list')->with('surveys',$surveys)->with('flash_message','Survey has been updated.');
 	}
 
@@ -122,10 +146,33 @@ class SurveyController extends BaseController {
 	    Question::where('survey_id', '=', $survey_id)->delete();
 	    Survey::destroy($survey_id);
 
-	    $surveys    = Survey::all();
+	    $surveys    = Survey::where('lastvaliddate', '>=', new DateTime('today'))->get();
 
-    	return View::make('survey_list')->with('surveys',$surveys);
+    	return View::make('survey_list')->with('surveys',$surveys)->with('flash_message', 'Survey has been deleted.');
 	}
+
+	/**
+	* Show the "show a survey's"
+	* @return View
+	*/
+	public function getResult($survey_id) {
+
+		$idCount = 1;
+		$idOption=1;
+		$idOptionid=1;
+
+		try{
+			$survey = Survey::with('answer')->findOrFail($survey_id);
+		}
+		catch(Exception $e) {
+			return Redirect::to('/survey/result')->with('flash_message', 'survey not found');
+		}
+
+		//dd($answers);
+		return View::make('survey_result')
+		->with('survey',$survey);
+	}
+
 
 }
 ?>

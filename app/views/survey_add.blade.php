@@ -7,23 +7,29 @@
 @section('content')
 
 <div class="container">
-	<h1>Add a new survey/poll</h1>
 
 	{{ Form::open(array('url' => '/survey/create')) }}
 
 
-	<h1>Please create new Survey/Poll here.</h1>
+	<h2><label class="label label-default">Create a new Survey/Poll here.</label></h2> <br>
 
-		{{ Form::label('name','Survey Title',array('class' => 'label label-default')) }}
-		{{ Form::text('name'); }}
+		<div class='form-group'>
+		{{ Form::label('name','Survey Title',array('class' => 'label label-default')) }}&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		{{ Form::text('name'); }} 
+	</div>
 
-		{{ Form::label('description','Survey Description',array('class' => 'label label-default')) }}
-		{{ Form::text('description'); }}
+		<div class='form-group'>
+		{{ Form::label('description','Survey Description',array('class' => 'label label-default')) }}&nbsp;&nbsp;&nbsp;&nbsp;
+		{{ Form::text('description'); }} </div>
 
+		<div class='form-group'>
 		{{ Form::label('lastvaliddate','Survey Last Valid Date',array('class' => 'label label-default')) }}
-		{{ Form::text('lastvaliddate'); }}
+		{{ Form::text('lastvaliddate'); }}</div>
 
-		{{ Form::submit('Add',array('class' => 'btn btn-primary')); }}
+		<div class='form-group'>
+		{{ Form::submit('Add New Survey',array('class' => 'btn btn-primary')); }}
+	</div>
 
 	{{ Form::close() }}
 
