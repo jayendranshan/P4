@@ -36,15 +36,12 @@ class SurveyController extends BaseController {
 	public function postCreate() {
 		# Instantiate the survey model
 		$survey = new Survey();
-		//$survey->fill(Input::all());
 
 		$survey->name = Input::get('name');
 		$survey->description = Input::get('description');
 		$survey->user_id = Auth::id();
 		$survey->lastvaliddate = Input::get('lastvaliddate');
 		$survey->save();
-		# Magic: Eloquent
-		//$book->save();
 		
 		return Redirect::action('QuestionController@getCreate')->with('flash_message','Your survey has been added.');
 	}

@@ -34,21 +34,7 @@ class ParticipateSurveyController extends BaseController {
 			return Redirect::to('/survey/participatelist')->with('flash_message', 'survey not found');
 		}
 
-		try {
-			$question = Question::where('survey_id', '=', $survey_id)->get();
-		}
-		catch(Exception $e) {
-			return Redirect::to('/survey/participatelist')->with('flash_message', 'Question not found');
-		}
-
-		try {
-			$answers = Answer::where('survey_id', '=', $survey_id)->get();
-		}
-		catch(Exception $e) {
-			return Redirect::to('/survey/participatelist')->with('flash_message', 'Answer not found');
-		}
-		return View::make('survey_participate')->with('survey',$survey)->with('question', $question)
-		->with('answers', $answers);
+		return View::make('survey_participate')->with('survey',$survey);
 	}
 
 
@@ -58,20 +44,35 @@ class ParticipateSurveyController extends BaseController {
 	*/
 	public function postParticipate() {
 
-
+		$AnswerID = "";
 		$surveys    = Survey::where('lastvaliddate', '>=', new DateTime('today'))->get();;
 
-		$AnswerID = Input::get('Answer');
-		$Answer = Answer::find($AnswerID);
+		if (isset($_POST["Answer"])) 
+		{
+			$AnswerID = Input::get('Answer');
 
-		$Vote = $Answer->answerCount;
+			$Answer = Answer::find($AnswerID);
+
+			$Vote = $Answer->answerCount;
+			
+			$Answer->answerCount = $Vote + 1;
+
+			$Answer->save();
+
+	    	//return View::make('user_survey')->with('surveys',$surveys)->with('flash_message', 'Your vote has been recorded.');
+	    	return Redirect::to('/survey/participatelist')
+	    	->with('surveys',$surveys)->with('flash_message', 'Your vote has been recorded.');
+		}
+		else
+		{
+			$survey = Survey::with('question','answer')->findOrFail(Input::get('surveyid'));
+			//return View::make('survey_participate')->with('survey',$survey)
+			//->with('flash_message', 'Please choose an option to vote.');
+			return Redirect::to('/survey/participate/'.Input::get('surveyid'))->
+				with('flash_message','Please choose an option to vote.');
+		}
 		
-		$Answer->answerCount = $Vote + 1;
-
-		$Answer->save();
-
-
-    	return View::make('user_survey')->with('surveys',$surveys);
+		
 	}
 
 

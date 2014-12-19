@@ -9,7 +9,8 @@
 <div class="container">
 <h1>Vote for the survey {{{$survey->name}}}</h1>
 {{ Form::open(array('action' => 'ParticipateSurveyController@postParticipate')) }}
-
+		
+		{{ Form::hidden('surveyid',$survey['id']); }}
 		@foreach($survey->question as $question)
 			{{ Form::label('question',$question['questiontext'],array('class' => 'label label-default')) }} <br />
 		@endforeach
